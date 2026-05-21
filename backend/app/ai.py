@@ -2,6 +2,9 @@ from __future__ import annotations
 import math
 import pandas as pd
 from collections import defaultdict
+import os
+import json
+from mistralai.client import Mistral
 
 CATEGORY_KEYWORDS = {
     "Groceries": ["kroger", "walmart", "aldi", "trader joe", "whole foods", "costco", "target grocery"],
@@ -122,3 +125,45 @@ def generate_insights(df: pd.DataFrame) -> dict:
         "anomalies": anomaly_messages,
         "recommendations": recommendations,
     }
+
+def generate_mistral_insights(df: pd.DataFrame) -> dict:
+    if df.empty:
+        return generate_insights(df)
+
+    api_key = os.getenv("MISTRAL_API_KEY")
+    if not api_key:
+        return generate_insights(df)
+
+    client = Mistral(api_key=api_key)
+
+    sample_transactions = df.head(50).to_dict(orient="records")
+
+    prompt = f"""
+You are an AI financial assistant.
+
+Analyze these transactions and return ONLY valid JSON with this exact structure:
+
+{{
+  "summary": "one concise financial overview",
+  "anomalies": ["unusual transaction observations"],
+  "recommendations": ["practical financial recommendations"]
+}}
+
+Transactions:
+{sample_transactions}
+"""
+
+    try:
+        response = client.chat.complete(
+            model="mistral-small-latest",
+            messages=[
+                {"role": "user", "content": prompt}
+            ],
+        )
+
+        content = response.choices[0].message.content
+        return json.loads(content)
+
+    except Exception as e:
+        print("Mistral insight generation failed:", e)
+        return generate_insights(df)

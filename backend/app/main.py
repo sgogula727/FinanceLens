@@ -10,7 +10,7 @@ from pathlib import Path
 from .database import Base, engine, get_db, SessionLocal
 from .models import Transaction
 from .schemas import TransactionOut, SummaryResponse, InsightResponse
-from .ai import categorize_transaction, detect_anomalies, generate_insights
+from .ai import categorize_transaction, detect_anomalies, generate_insights, generate_mistral_insights
 from .seed_data import seed_transactions
 latest_uploaded_file = None
 app = FastAPI(title="FinanceLens API")
@@ -186,7 +186,7 @@ def get_insights(db: Session = Depends(get_db)):
         for t in txs
     ])
 
-    insights = generate_insights(df)
+    insights = generate_mistral_insights(df)
     return insights
 
 

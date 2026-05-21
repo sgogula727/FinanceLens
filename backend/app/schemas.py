@@ -34,4 +34,3 @@ class InsightResponse(BaseModel):
     summary: str
     anomalies: list[str]
     recommendations: list[str]
-    
