@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Database / uploads
+*.db
+uploads/
+
+# Environment variables
+.env
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+
+# Misc
+.DS_Store
