@@ -23,7 +23,7 @@ latest_uploaded_file = None
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=["http://finance-lens-6f5io5weh-sgogula727s-projects.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
