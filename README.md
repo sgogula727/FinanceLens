@@ -1,5 +1,4 @@
 # FinanceLens
-# FinanceLens
 
 FinanceLens is an AI-powered personal finance dashboard that helps users understand spending habits, identify unusual transactions, and generate personalized financial insights from transaction data. Users can upload bank transaction CSV files and instantly receive analytics, visualizations, and AI-generated recommendations.
 
