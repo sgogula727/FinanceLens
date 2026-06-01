@@ -1,8 +1,7 @@
 # FinanceLens
-<<<<<<< HEAD
 
 https://finance-lens-kappa.vercel.app
-=======
+
 # FinanceLens
 
 FinanceLens is an AI-powered personal finance dashboard that helps users understand spending habits, identify unusual transactions, and generate personalized financial insights from transaction data. Users can upload bank transaction CSV files and instantly receive analytics, visualizations, and AI-generated recommendations.
@@ -61,6 +60,7 @@ FinanceLens is an AI-powered personal finance dashboard that helps users underst
 * Scalable backend architecture with PostgreSQL
 
 
+
 ## To-Do
 
 * Multi-user authentication
@@ -68,8 +68,6 @@ FinanceLens is an AI-powered personal finance dashboard that helps users underst
 * Investment portfolio analysis
 * Real-time bank integrations
 * Advanced ML-based spending predictions
-
-
 
 ## Getting Started
 
@@ -90,8 +88,3 @@ cd frontend
 npm install
 npm run dev
 ```
-
-## Project Motivation
-
-Managing personal finances can be overwhelming when dealing with large transaction histories. FinanceLens simplifies financial analysis by combining data visualization, automated categorization, anomaly detection, and AI-powered insights into a single platform that helps users make more informed financial decisions.
->>>>>>> c6ee710 (updated read-me)
